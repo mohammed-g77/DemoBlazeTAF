@@ -1,6 +1,7 @@
 package com.blazedemo.utils.action;
 
 import com.blazedemo.utils.WaitManager;
+import com.blazedemo.utils.logs.LogsManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,7 +19,7 @@ public class FrameActions {
 
             try {
                 d.switchTo().frame(index);
-                return true;
+                 return true;
 
         } catch (Exception e) {
             return false;
@@ -32,6 +33,7 @@ public class FrameActions {
         waitManager.fluentWait().until(d -> {
             try {
                 d.switchTo().frame(nameOrId);
+                LogsManager.info("Switched to frame with name or ID: ", nameOrId);
                 return true;
             } catch (Exception e) {
                 return false;
@@ -44,6 +46,7 @@ public class FrameActions {
         waitManager.fluentWait().until(d -> {
             try {
                 d.switchTo().frame(d.findElement(frameElement));
+                LogsManager.info("Switched to frame with WebElement: ", frameElement.toString());
                 return true;
             } catch (Exception e) {
                 return false;
@@ -57,6 +60,7 @@ public class FrameActions {
         waitManager.fluentWait().until(d -> {
             try {
                 d.switchTo().defaultContent();
+                LogsManager.info("Switched back to default content");
                 return true;
             } catch (Exception e) {
                 return false;

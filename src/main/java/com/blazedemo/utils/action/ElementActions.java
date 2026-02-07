@@ -1,6 +1,7 @@
 package com.blazedemo.utils.action;
 
 import com.blazedemo.utils.WaitManager;
+import com.blazedemo.utils.logs.LogsManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,7 +24,8 @@ public class ElementActions {
                 WebElement element = d.findElement(locator);
                 scrollToElementJS(locator);
                 element.click();
-                return true;
+                LogsManager.info("Clicked on element:", locator.toString());
+                 return true;
             });
         } catch (Exception e) {
             return false;
@@ -40,7 +42,8 @@ public class ElementActions {
                 scrollToElementJS(locator);
                 element.clear();
                 element.sendKeys(text);
-                return true;
+                    LogsManager.info("Typed text: ", text, " into element: ", locator.toString());
+                 return true;
             });
         } catch (Exception e) {
             return false;
@@ -56,6 +59,7 @@ public class ElementActions {
                 WebElement element = d.findElement(locator);
                 scrollToElementJS(locator);
                 String msg = element.getText();
+                    LogsManager.info("Got text: ", msg, " from element: ", locator.toString());
                 return !msg.isEmpty() ? msg : null;
             });
         } catch (Exception e) {
@@ -72,6 +76,7 @@ public class ElementActions {
                 WebElement element = d.findElement(locator);
                 scrollToElementJS(locator);
                 element.sendKeys(fileAbsolutePath);
+                    LogsManager.info("Uploaded file: ", fileAbsolutePath, " to element: ", locator.toString());
                 return true;
             });
         } catch (Exception e) {
