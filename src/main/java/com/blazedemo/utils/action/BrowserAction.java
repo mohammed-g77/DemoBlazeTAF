@@ -1,4 +1,4 @@
-package com.blazedemo.utils;
+package com.blazedemo.utils.action;
 
 import org.openqa.selenium.WebDriver;
 
